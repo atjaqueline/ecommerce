@@ -35,7 +35,8 @@ const Arrow = styled.div`
 const Wrapper = styled.div`
     height: 100%;
     display: flex;
-    transform: translateX(0);
+    transition: all 1.5s ease;
+    transform: translateX(${props=>props.slideIndex * -100}vw);
 `;
 const Slide = styled.div`
     width: 100vw;
@@ -51,7 +52,7 @@ const ImgContainer = styled.div`
 `;
 
 const Image = styled.img`
-    height: 80%;    
+    height: 80%;  
 `;
 
 const InfoContainer = styled.div`
@@ -79,25 +80,34 @@ const Button = styled.button`
 
 const Slider = () => {
     const [slideIndex, setSlideIndex] = useState(0);
-    const handleClick = (direction)=>{};
+    const handleClick = (direction)=>{
+        if(direction === "left"){
+            setSlideIndex(slideIndex > 0 ? slideIndex-1 : 2 );
+        } else {
+            setSlideIndex(slideIndex < 2 ? slideIndex + 1 : 0);
+        }
+
+    };
   return (
     <Container>
         <Arrow direction="left" onClick={()=>handleClick("left")}>
             <ArrowLeftOutlined/>
         </Arrow>
-        <Wrapper>
-            <Slide bg="f5fafd">
+        <Wrapper slideIndex={slideIndex}>
+            {sliderItems.map((item)=>(
+                <Slide bg={item.bg}>
                 <ImgContainer>
-                    <Image src="https://img.freepik.com/free-photo/glad-dark-haired-young-woman-says-sounds-good-confirms-something-everything-control-going-great-approves-promo-has-glad-expression-agrees-with-person-wears-yellow-sweatshirt_273609-42865.jpg?w=900&t=st=1647987205~exp=1647987805~hmac=666b3e2d7ba5596fa9e6c898dc7032c9f63750d5e81144c0f6ae8000bdad26d5"/>
+                    <Image src={item.img}/>
                 </ImgContainer>
                 <InfoContainer>
-                    <Title>SUMMER SALE</Title>
-                    <Description>DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.</Description>
+                    <Title>{item.title}</Title>
+                    <Description>{item.desc}</Description>
                     <Button>SHOP NOW</Button>
                 </InfoContainer>
             </Slide>
-            
-        </Wrapper>
+            ))}
+             </Wrapper>
+
         <Arrow direction="right" onClick={()=>handleClick("right")}>
             <ArrowRightOutlined/>
         </Arrow>
