@@ -1,9 +1,8 @@
-import { Facebook, Instagram, Pinterest, Twitter } from "@material-ui/icons"
+import { Facebook, Instagram, MailOutline, Phone, Pinterest, Room, Twitter } from "@material-ui/icons"
 import styled from "styled-components"
 
 const Container = styled.div`
     display: flex;
-
 `
 const Left = styled.div`
     flex: 1;
@@ -40,15 +39,33 @@ const Title = styled.h3`
     margin-bottom: 30px;
 `
 
-const List = styled.ul``
+const List = styled.ul`
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+`
 
-const ListItem = styled.li``
+const ListItem = styled.li`
+    width: 50%;
+    margin-bottom: 10px;
+`
 
 const Right = styled.div`
     flex: 1;
     padding: 20px;
 `
 
+const ContactItem = styled.div`
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+`
+
+const Payment = styled.img`
+    width: 50%;
+`
 
 const Footer = () => {
   return (
@@ -87,7 +104,19 @@ const Footer = () => {
           <ListItem>Terms</ListItem>
             </List>
         </Center>
-        <Right></Right>
+        <Right>
+            <Title>Contact</Title>
+            <ContactItem>
+                <Room style={{marginRight:"10px"}}/>634 Pixie Dust, North Tobin 98765
+            </ContactItem>
+            <ContactItem>
+                <Phone style={{marginRight:"10px"}}/> +1 415 6787 7865
+            </ContactItem>
+            <ContactItem>
+               <MailOutline style={{marginRight:"10px"}}/> contact@magazinelu.com
+            </ContactItem>
+            <Payment src="https://i.ibb.co/Qfvn4z6/payment.png"/>
+        </Right>
 
     </Container>
   )
