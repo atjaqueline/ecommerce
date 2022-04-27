@@ -1,10 +1,12 @@
 import styled from "styled-components"
 
-const Container = styled.div``
+const Container = styled.div`
+
+`
 
 export const ProductList = () => {
   return (
-    <div>ProductList</div>
+    <div>ProductList insert here</div>
   )
 }
 
