@@ -22,6 +22,10 @@ const FilterText = styled.span`
   font-weight: 600;
 `
 
+const Select = styled.select``
+
+const Option = styled.option``
+
 export const ProductList = () => {
   return (
     <Container>
@@ -29,8 +33,31 @@ export const ProductList = () => {
       <Announcement/>
       <Title>Dresses</Title>
       <FilterContainer>
-        <Filter><FilterText>Filter Products</FilterText></Filter>
-        <Filter><FilterText>Sort Products</FilterText></Filter>
+        <Filter>
+          <FilterText>Filter Products:</FilterText>
+          <Select>
+          <Option disabled selected>Color</Option>
+            <Option>White</Option>
+            <Option>Black</Option>
+            <Option>Yellow</Option>
+            <Option>Red</Option>
+            <Option>Blue</Option>
+            <Option>Green</Option>
+          </Select>
+          <Select>
+            <Option>XS</Option>
+            <Option>S</Option>
+            <Option>M</Option>
+            <Option>L</Option>
+            <Option>XL</Option>
+          </Select>
+        </Filter>
+        
+
+
+       <Filter>
+          <FilterText>Sort Products:</FilterText>
+        </Filter>
       </FilterContainer>
       <Products/>
       <Newsletter/>
